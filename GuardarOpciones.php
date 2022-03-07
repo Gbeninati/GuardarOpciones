@@ -3,45 +3,52 @@
 <body>
 <div>
   <h1>Caso de prueba BD</h1>]
+  <?php
+  /*
+  $id = $_POST["ID"];
+  $opcion1 = $_POST["S1"];
+  $opcion2 = $_POST["S2"];
+  $opcion3 = $_POST["S3"];
+  $opcion4 = $_POST["S4"];
+  $sesgo = $_POST["sesgo"];
+  $tipo = $_POST["tipo"];
+
+  if($tipo == ""){
+    $tipo = "attribution";
+  }
+
+
+  if($opcion1 != "" && $id != ""){
+    $con = mysqli_connect("b2fkm7btnwzbsxqqtnid-mysql.services.clever-cloud.com","uwgkp87cpt4x9t57","Ij7KwdVLn75BDWy0a8HI","b2fkm7btnwzbsxqqtnid");
+    if($opcion4 != ""){
+      $SQL = "INSERT INTO simulacion (id_usuario, s1, s2, s3, s4, sesgo, tipo) VALUES (".$id. ", ".$opcion1.",".$opcion2.",".$opcion3.",".$opcion4.",".$sesgo.",'".$tipo."')";
+    }else{
+      $SQL = "INSERT INTO simulacion (id_usuario, s1, s2, s3, sesgo, tipo) VALUES (".$id. ", ".$opcion1.",".$opcion2.",".$opcion3.",".$sesgo.",'".$tipo."')";
+    }
+  */
+
+  $con = mysqli_connect("b2fkm7btnwzbsxqqtnid-mysql.services.clever-cloud.com","uwgkp87cpt4x9t57","Ij7KwdVLn75BDWy0a8HI","b2fkm7btnwzbsxqqtnid");
+  $SQL = "SELECT * FROM simulacion";
+
+  if (mysqli_connect_errno()) {
+    echo "Failed to connect to MySQL: " . mysqli_connect_error();
+    exit();
+  }
+
+  // Perform query
+  if ($result = mysqli_query($con, $SQL)) {
+    echo "Returned rows are: " . mysqli_num_rows($result);
+    // Free result set
+    mysqli_free_result($result);
+  }
+
+  mysqli_close($con);
+  }else{
+    echo("El mensaje no se recibio");
+  }
+   ?>
 </div>
 </body>
 </html>
 
-<?php
-$id = $_POST["ID"];
-$opcion1 = $_POST["S1"];
-$opcion2 = $_POST["S2"];
-$opcion3 = $_POST["S3"];
-$opcion4 = $_POST["S4"];
-$sesgo = $_POST["sesgo"];
-$tipo = $_POST["tipo"];
 
-if($tipo == ""){
-  $tipo = "attribution";
-}
-
-
-if($opcion1 != "" && $id != ""){
-  $con = mysqli_connect("b2fkm7btnwzbsxqqtnid-mysql.services.clever-cloud.com","uwgkp87cpt4x9t57","Ij7KwdVLn75BDWy0a8HI","b2fkm7btnwzbsxqqtnid");
-  if($opcion4 != ""){
-    $SQL = "INSERT INTO simulacion (id_usuario, s1, s2, s3, s4, sesgo, tipo) VALUES (".$id. ", ".$opcion1.",".$opcion2.",".$opcion3.",".$opcion4.",".$sesgo.",'".$tipo."')";
-  }else{
-    $SQL = "INSERT INTO simulacion (id_usuario, s1, s2, s3, sesgo, tipo) VALUES (".$id. ", ".$opcion1.",".$opcion2.",".$opcion3.",".$sesgo.",'".$tipo."')";
-  }
-if (mysqli_connect_errno()) {
-  echo "Failed to connect to MySQL: " . mysqli_connect_error();
-  exit();
-}
-
-// Perform query
-if ($result = mysqli_query($con, $SQL)) {
-  echo "Returned rows are: " . mysqli_num_rows($result);
-  // Free result set
-  mysqli_free_result($result);
-}
-
-mysqli_close($con);
-}else{
-  echo("El mensaje no se recibio");
-}
- ?>
