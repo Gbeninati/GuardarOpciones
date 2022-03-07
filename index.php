@@ -15,9 +15,5 @@
     // Free result set
     mysqli_free_result($result);
   }
-
   mysqli_close($con);
-  }else{
-    echo("El mensaje no se recibio");
-  }
 ?>
